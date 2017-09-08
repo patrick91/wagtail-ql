@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from graphene_django.views import GraphQLView
+
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
@@ -11,6 +13,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from search import views as search_views
 
 urlpatterns = [
+    url(r'^graphql', GraphQLView.as_view(graphiql=True)),
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
